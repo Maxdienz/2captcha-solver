@@ -4,3 +4,5 @@ importScripts(
     '/background/background.js',
     '/content/captcha/normal/background.js'
 );
+
+setInterval(() => { self.serviceWorker.postMessage('ping') }, 20000);
