@@ -14,13 +14,15 @@
                 container.id = "hcaptcha-container-" + Date.now();
             }
 
-            registerCaptchaWidget({
-                captchaType: "hcaptcha",
-                widgetId: 0,
-                containerId: container.id,
-                sitekey: container.dataset.sitekey || null,
-                callback: container.dataset.callback || null,
-            });
+            if (container.dataset.sitekey != null) {
+                registerCaptchaWidget({
+                    captchaType: "hcaptcha",
+                    widgetId: 0,
+                    containerId: container.id,
+                    sitekey: container.dataset.sitekey || null,
+                    callback: container.dataset.callback || null,
+                });
+            }
         }
     }, 2000);
 
