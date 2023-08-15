@@ -1,16 +1,20 @@
 (() => {
 
     setInterval(function () {
-        let input = document.getElementById("cf-turnstile");
-        if (!input) return;
+        let cf = document.getElementById("cf-turnstile");
+        if (!cf) {
+            const inputResponse = document.querySelector('input[name="cf-turnstile-response"]');
+            cf = inputResponse && inputResponse.parentNode;
+        }
+
+        if (!cf) return;
 
         if (isCaptchaWidgetRegistered("turnstile", 0)) return;
 
-        getTurnstileWidgetInfo(input);
+        getTurnstileWidgetInfo(cf);
     }, 2000);
 
-    const getTurnstileData = function () {
-        const cf = document.getElementById('cf-turnstile');
+    const getTurnstileData = function (cf) {
         if (cf) {
             return cf.getAttribute('data-sitekey');
         }
@@ -18,19 +22,19 @@
         return null;
     };
 
-    const getTurnstileWidgetInfo = function (input) {
-        const sitekey = getTurnstileData();
+    const getTurnstileWidgetInfo = function (cf) {
+        const sitekey = getTurnstileData(cf);
 
         if (sitekey) {
-            if (!input.id) {
-                input.id = "turnstile-input-" + sitekey;
+            if (!cf.id) {
+                cf.id = "turnstile-input-" + sitekey;
             }
 
             registerCaptchaWidget({
                 captchaType: "turnstile",
                 widgetId: sitekey,
                 sitekey: sitekey,
-                inputId: input.id,
+                inputId: cf.id,
             });
         }
     };

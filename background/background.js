@@ -33,7 +33,6 @@ function initApiClient(apiKey) {
     });
 }
 
-
 /*
  * Manage message passing
  */

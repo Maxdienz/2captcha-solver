@@ -12,7 +12,6 @@
         }, configurable: true
     });
 
-
     const initYandexHandler = function () {
         setTimeout(function () {
             interceptorFunc();

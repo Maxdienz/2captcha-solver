@@ -28,7 +28,12 @@ CaptchaProcessors.register({
     getParams: function(widget, config) {
         let params = {
             url: location.href,
-            sitekey : widget.sitekey
+            sitekey : widget.sitekey,
+            pageurl : widget.pageurl,
+            data : widget.data,
+            pagedata : widget.pagedata,
+            action : widget.action,
+            userAgent : navigator.userAgent,
         };
 
         return params;
