@@ -24,7 +24,7 @@
             action: null,
             s: null,
             callback: null,
-            enterprise: grecaptcha.enterprise ? true : false,
+            enterprise: grecaptcha && grecaptcha.enterprise ? true : false,
             containerId: null,
             bindedButtonId: null,
         };
