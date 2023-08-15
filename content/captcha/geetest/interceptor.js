@@ -98,6 +98,7 @@
                 const selectorId = getSelectorId(e);
                 params.appendToSelector = selectorId;
                 initHelper();
+                return this
             },
             onReady: function (e) {
                 captchaObjEvents.onReady = e;
@@ -110,6 +111,10 @@
             },
             onSuccess: function (e) {
                 captchaObjEvents.onSuccessCallback = e;
+                return this
+            },
+            onShow: function (e) {
+                captchaObjEvents.onShow = e;
                 return this
             },
             onError: function (e) {
@@ -130,10 +135,11 @@
             destroy: function () {
                 appendToSelector(params.appendToSelector)
             },
-            verify: function () {
-                const selectorId = getSelectorId(document.querySelector('#captchaBox') || document.forms[0]);
+            verify: function (e) {
+                const selectorId = getSelectorId(document.querySelector('#captchaBox') || document.forms[0] || document.body);
                 params.appendToSelector = selectorId;
                 initHelper();
+                return e;
             }
         };
 
